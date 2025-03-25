@@ -528,6 +528,12 @@
         <img src="3.png" alt="SRM Logo" class="srm-logo">
     </div>  
     
+    <!-- Audio element for inauguration sound -->
+    <audio id="inaugurateAudio" preload="auto">
+        <source src="1.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    
     <!-- Welcome page -->
     <div class="page welcome-page" id="welcomePage">
         <h1 class="welcome-title" style="font-size: 150px;">RASRANG'25</h1>
@@ -592,6 +598,9 @@
             const countdown = document.getElementById('countdown');
             const launchParticles = document.getElementById('launchParticles');
             const progressBar = document.getElementById('progressBar');
+            
+            // Get audio element
+            const inaugurateAudio = document.getElementById('inaugurateAudio');
             
             // Function to create confetti
             function createConfetti() {
@@ -710,6 +719,11 @@
             
             // Start the inauguration process
             inaugurateBtn.addEventListener('click', function() {
+                // Play the inauguration audio
+                inaugurateAudio.play().catch(error => {
+                    console.error("Audio playback failed:", error);
+                });
+                
                 // Switch to countdown page
                 welcomePage.classList.add('hidden');
                 countdownPage.classList.remove('hidden');
